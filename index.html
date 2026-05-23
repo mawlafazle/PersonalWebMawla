@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fazle Mawla | Financial Management Portfolio</title>
+    <link rel="icon" href="Logo.Mawla.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & VARIABLE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #030014;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-color: #a855f7;
+            --accent-advanced: #3b82f6; 
+            --text-primary: #ffffff;
+            --text-secondary: #b4b6c4;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            padding-top: 100px;
+        }
+
+        /* --- NAVBAR STYLES --- */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar {
+            background: rgba(3, 0, 20, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            z-index: 10002;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 10002;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            position: relative;
+            height: calc(100vh - 100px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .subtitle span {
+            color: var(--accent-color);
+        }
+
+        .description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+        }
+
+        /* --- BUTTON STYLES --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border: 1px solid var(--accent-color);
+            background: rgba(168, 85, 247, 0.08);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS COMMON STYLES --- */
+        .section {
+            padding: 80px 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-title span {
+            color: var(--accent-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .project-category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        .project-category-title.advanced {
+            border-left-color: var(--accent-advanced);
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .project-card.advanced-card:hover {
+            border-color: var(--accent-advanced);
+        }
+
+        .project-header-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-footer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .tech-tag.basic {
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .tech-tag.advanced {
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .view-link {
+            margin-left: auto;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .project-card.advanced-card .view-link {
+            color: var(--accent-advanced);
+        }
+
+        /* --- EDUCATIONS SECTION --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 2px solid var(--border-color);
+            padding-left: 35px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -46px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-color);
+            border: 4px solid var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .timeline-content h4 {
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-top: 2px;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .timeline-content .date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3px 10px;
+            border-radius: 5px;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* --- KEY SKILLS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .skill-box:hover {
+            border-color: var(--accent-color);
+            background: rgba(168, 85, 247, 0.03);
+            transform: translateY(-2px);
+        }
+
+        .skill-box i {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 80px 5%;
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(to top, rgba(168, 85, 247, 0.03), transparent);
+        }
+
+        .footer-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .footer-content h2 span {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.6rem;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copy {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 900px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                width: 100%;
+                top: 0;
+            }
+
+            .navbar {
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                border-top: none;
+                padding: 15px 20px;
+                background: rgba(3, 0, 20, 0.95);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #04011a;
+                border-bottom: 1px solid var(--border-color);
+                flex-direction: column;
+                padding: 25px 0;
+                gap: 20px;
+                display: none;
+                z-index: 10001;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .hero-section {
+                height: auto;
+                padding: 120px 20px 60px 20px;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            .section {
+                padding: 60px 20px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .footer-content h2 {
+                font-size: 1.6rem;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Mawla<span>.</span></div>
+            
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#educations">Educations</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="grid-bg"></div>
+        <div class="hero-content">
+            <h1>Fazle Mawla</h1>
+            <p class="subtitle">Financial Management <span>Student</span></p>
+            <p class="description">Mahasiswa Manajemen Keuangan yang berfokus pada analisis laporan keuangan, valuasi aset, prediksi risiko finansial, dan penerapan sistem teknologi informasi akuntansi & instrumen data analisis.</p>
+            <a href="#projects" class="btn">Lihat Projek Saya <i class="fas fa-arrow-down" style="margin-left: 8px;"></i></a>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2 class="section-title">Discover my <span>latest projects</span></h2>
+        <p class="section-subtitle">Kumpulan riset dan proyek analisis instrumen finansial yang telah saya kerjakan.</p>
+        
+        <div class="project-category-title">Proyek Dasar</div>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <div class="project-header-info">
+                    <h3>Analisis Laporan Keuangan Perusahaan Tbk</h3>
+                    <p>Melakukan evaluasi performa profitabilitas, likuiditas, dan solvabilitas emiten publik berdasarkan data historis laporan keuangan tahunan.</p>
+                </div>
+                <div class="project-footer">
+                    <span class="tech-tag basic">Financial Statement</span>
+                    <span class="tech-tag basic">Ratios</span>
+                    <a href="#" target="_blank" class="view-link">View <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header-info">
+                    <h3>Perbandingan Kinerja Keuangan Antar Perusahaan (Benchmarking)</h3>
+                    <p>Komparasi data performa keuangan komprehensif antar beberapa perusahaan dalam kluster industri yang sejenis untuk memetakan market leader.</p>
+                </div>
+                <div class="project-footer">
+                    <span class="tech-tag basic">Benchmarking</span>
+                    <span class="tech-tag basic">Industry Analysis</span>
+                    <a href="#" target="_blank" class="view-link">View <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header-info">
+                    <h3>Analisis Valuasi Saham dengan DCF Sederhana</h3>
+                    <p>Menghitung taksiran nilai intrinsik harga saham perusahaan menggunakan proyeksi arus kas bebas masa depan (Free Cash Flow) terdiskon.</p>
+                </div>
+                <div class="project-footer">
+                    <span class="tech-tag basic">DCF Valuation</span>
+                    <span class="tech-tag basic">Intrinsic Value</span>
+                    <a href="#" target="_blank" class="view-link">View <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header-info">
+                    <h3>Analisis Struktur Modal & Keputusan Pendanaan</h3>
+                    <p>Studi optimasi kombinasi utang (debt) dan ekuitas (equity) untuk meminimalkan beban modal rata-rata perusahaan (WACC).</p>
+                </div>
+                <div class="project-footer">
+                    <span class="tech-tag basic">Capital Structure</span>
+                    <span class="tech-tag basic">WACC</span>
+                    <a href="#" target="_blank" class="view-link">View <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header-info">
+                    <h3>Mini Research Report Industri</h3>
+                    <p>Penyusunan ringkasan komparatif gambaran makro industri tertentu terformat mirip standar publikasi Laporan Analis Sekuritas.</p>
+                </div>
+                <div class="project-footer">
+                    <span class="tech-tag basic">Research Report</span>
+                    <span class="tech-tag basic">Market Overview</span>
+                    <a href="#" target="_blank" class="view-link">View <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="project-category-title advanced">Proyek Tingkat Lanjut</div>
+        <div class="project-grid">
+            
+            <div class="project-card advanced-card">
+                <div class="project-header-info">
+                    <h3>Equity Research Report Profesional</h3>
+                    <p>Laporan komprehensif investasi saham mendalam mencakup rekomendasi beli/jual (Buy/Sell), didukung analisis makro-ekonomi dan valuasi berlapis.</p>
+                </div>
+                <div class="project-footer">
+                    <span class="tech-tag advanced">Equity Research</span>
+                    <span class="tech-tag advanced">Professional Spec</span>
+                    <a href="#" target="_blank" class="view-link">View <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card advanced-card">
+                <div class="project-header-info">
+                    <h3>Financial Distress Prediction Model</h3>
+                    <p>Pengembangan kalkulator model prediksi risiko kebangkrutan emiten menggunakan indikator formula Altman Z-Score / Springate Model.</p>
+                </div>
+                <div class="project-footer">
+                    <span class="tech-tag advanced">Altman Z-Score</span>
+                    <span class="tech-tag advanced">Risk Modeling</span>
+                    <a href="#" target="_blank" class="view-link">View <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card advanced-card">
+                <div class="project-header-info">
+                    <h3>Merger & Acquisition (M&A) Analysis Sederhana</h3>
+                    <p>Simulasi dampak finansial penggabungan dua entitas bisnis untuk memetakan potensi sinergi nilai pasca konsolidasi korporasi.</p>
+                </div>
+                <div class="project-footer">
+                    <span class="tech-tag advanced">M&A Strategy</span>
+                    <span class="tech-tag advanced">Corporate Action</span>
+                    <a href="#" target="_blank" class="view-link">View <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card advanced-card">
+                <div class="project-header-info">
+                    <h3>Makro-to-Micro Financial Impact Analysis</h3>
+                    <p>Analisis transmisi pengaruh kebijakan makro ekonomi global (suku bunga bank sentral, inflasi) terhadap kinerja laba mikro perusahaan lokal.</p>
+                </div>
+                <div class="project-footer">
+                    <span class="tech-tag advanced">Macro Economics</span>
+                    <span class="tech-tag advanced">Top-Down Approach</span>
+                    <a href="#" target="_blank" class="view-link">View <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="educations" class="section">
+        <h2 class="section-title">My <span>Educations</span></h2>
+        <p class="section-subtitle">Latar belakang pendidikan akademis formal saya.</p>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>STIE Al-Madani Lampung</h3>
+                    <h4>S1 - Manajemen (Fokus Manajemen Keuangan)</h4>
+                    <p class="date">2024 - Present</p>
+                    <p>Mempelajari teori pasar modal, tata kelola keuangan korporasi, investasi kuantitatif, analisis kelayakan bisnis, serta pemanfaatan teknologi sistem informasi manajemen untuk kebutuhan korporat.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>SMK Negeri 2 Bandar Lampung</h3>
+                    <h4>Teknik Elektro</h4>
+                    <p class="date">2020 - 2023</p>
+                    <p>Membangun kompetensi dasar fundamental yang kuat dalam kedisiplinan teknologi, pemecahan masalah teknis secara logis, serta pembentukan etos kerja profesional sejak dini.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2 class="section-title">Here are some of my <span>key skills</span></h2>
+        <p class="section-subtitle">Penguasaan perangkat lunak, sistem enterprise, dan instrumen analisis data keuangan.</p>
+        <div class="skills-grid">
+            <div class="skill-box"><i class="fas fa-file-excel"></i> Microsoft Excel</div>
+            <div class="skill-box"><i class="fas fa-file-word"></i> Microsoft Word</div>
+            <div class="skill-box"><i class="fas fa-file-powerpoint"></i> Microsoft PowerPoint</div>
+            <div class="skill-box"><i class="fas fa-check-double"></i> Accurate</div>
+            <div class="skill-box"><i class="fas fa-chart-bar"></i> Power BI</div>
+            <div class="skill-box"><i class="fas fa-database"></i> SQL</div>
+            <div class="skill-box"><i class="fab fa-python"></i> Python</div>
+            <div class="skill-box"><i class="fas fa-cubes"></i> SAP</div>
+            <div class="skill-box"><i class="fas fa-server"></i> Oracle</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h2>Elevate <span>your</span> business with financial clarity</h2>
+            <a href="mailto:emailanda@gmail.com?subject=Tanya%20Mengenai%20Portfolio%20Finansial" class="btn">Let's get in touch <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></a>
+            
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="copy">&copy; 2026 Fazle Mawla. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const hamburger = document.getElementById('hamburger-menu');
+            const navMenu = document.getElementById('nav-menu');
+
+            // Kontrol Menu Hamburger Mobile
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Otomatis tutup laci saat navigasi diklik
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Tutup laci jika klik area luar area menu
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+
+            // Blur transisi intensitas navbar saat digulir
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 30) {
+                    navbar.style.background = 'rgba(3, 0, 20, 0.95)';
+                    navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.6)';
+                } else {
+                    navbar.style.background = 'rgba(3, 0, 20, 0.7)';
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
